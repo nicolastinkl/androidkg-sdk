@@ -48,6 +48,13 @@ Copy the sdk jar file to the project, [jar package download address](http://sear
 
 
 ## Instructions
+
+### 1 : copy mylibrary to your project
+
+add code : include ':mylibrary' to settings.grddle
+![](image/Snipaste_2023-05-15_16-58-27.png)
+
+### 2： integration code to your project 
 UploadManager can be created once and used all the time.
 7.6.2 ~ 8.3.2 will call AndroidNetwork.getMobileDbm to get the network signal strength
 Requires Manifest.permission.ACCESS_FINE_LOCATION and Manifest.permission.ACCESS_COARSE_LOCATION permissions
@@ -62,3 +69,5 @@ QiniuCenterManager.getIntance(context,packageName)
 
 ...
 ``` 
+
+
