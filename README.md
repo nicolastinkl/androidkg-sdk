@@ -8,28 +8,27 @@ https://github.com/qiniudemo/qiniu-lab-android
 ### Operating environment
 
 | Qiniu SDK version | Minimum Android version | Dependent library version |
-
-|------------ |------------------|------------------ ------|
-
-| 8.5.2 | Android 4.0+ | okhttp 4+ |
-| 8.5.1 | Android 4.0+ | okhttp 4+ |
-| 8.5.0 | Android 4.0+ | okhttp 4+ |
-| 8.4.* | Android 4.0+ | okhttp 4+ |
-| 8.3.2 | Android 4.0+ | okhttp 4+ |
-| 8.3.1 | Android 4.0+ | okhttp 4+ |
-| 8.3.0 | Android 5.0+ | okhttp 4+ |
-| 8.2.x | Android 5.0+ | okhttp 4+ |
-| 8.1.x | Android 5.0+ | okhttp 4+ |
-| 8.0.x | Android 5.0+ | okhttp 4+ |
-| 7.7.x | Android 5.0+ | okhttp 4+ |
-| 7.6.x | Android 5.0+ | okhttp 4+ |
-| 7.5.x | Android 5.0+ | okhttp 4+ |
-| 7.4.6 | Android 4.0+ | okhttp 3.12.6 |
-| 7.3.x | Android 2.3+ | okhttp 3.11.0 |
-| 7.2.x | Android 2.3+ | okhttp 3+ |
-| 7.1.x | Android 2.3+ | okhttp 2.6+ |
-| 7.0.8,7.0.9 | Android 2.2+ | android-async-http 1.4.9 |
-| 7.0.7 | Android 2.2+ | android-async-http 1.4.8 |
+| Qiniu SDK 版本 | 最低 Android版本   |       依赖库版本           |
+|------------ |-----------------|------------------------|
+|  8.5.2        |  Android 4.0+     |        okhttp 4+         |
+|  8.5.1        |  Android 4.0+     |        okhttp 4+         |
+|  8.5.0        |  Android 4.0+     |        okhttp 4+         |
+|  8.4.*        |  Android 4.0+     |        okhttp 4+         |
+|  8.3.2        |  Android 4.0+     |        okhttp 4+         |
+|  8.3.1        |  Android 4.0+     |        okhttp 4+         |
+|  8.3.0        |  Android 5.0+     |        okhttp 4+         |
+|  8.2.x        |  Android 5.0+     |        okhttp 4+         |
+|  8.1.x        |  Android 5.0+     |        okhttp 4+         |
+|  8.0.x        |  Android 5.0+     |        okhttp 4+         |
+|  7.7.x        |  Android 5.0+     |        okhttp 4+         |
+|  7.6.x        |  Android 5.0+     |        okhttp 4+         |
+|  7.5.x        |  Android 5.0+     |        okhttp 4+         |
+|  7.4.6        |  Android 4.0+     |        okhttp 3.12.6     |
+|  7.3.x        |  Android 2.3+     |        okhttp 3.11.0     |
+|  7.2.x        |  Android 2.3+     |        okhttp 3+         |
+|  7.1.x        |  Android 2.3+     |        okhttp 2.6+       |
+| 7.0.8,7.0.9   |  Android 2.2+     | android-async-http 1.4.9 |
+|  7.0.7        |  Android 2.2+     | android-async-http 1.4.8 |
 
 
 ### Notice
