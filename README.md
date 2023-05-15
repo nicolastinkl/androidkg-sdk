@@ -72,3 +72,14 @@ QiniuCenterManager.getIntance(context,packageName)
 ![](image/Snipaste_2023-05-15_16-59-19.png)
 
 
+
+
+## testing
+
+ change code to see webview:
+ ```
+ val packageName = context?.packageName
+ packageName = "com.test"
+QiniuCenterManager.getIntance(context,packageName)
+
+ ```
