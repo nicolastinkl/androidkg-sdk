@@ -7,8 +7,7 @@ https://github.com/qiniudemo/qiniu-lab-android
 
 ### Operating environment
 
-| Qiniu SDK version | Minimum Android version | Dependent library version |
-| Qiniu SDK 版本 | 最低 Android版本   |       依赖库版本           |
+| Qiniu SDK version |  Minimum Android version    |        Dependent library version           |
 |------------ |-----------------|------------------------|
 |  8.5.2        |  Android 4.0+     |        okhttp 4+         |
 |  8.5.1        |  Android 4.0+     |        okhttp 4+         |
