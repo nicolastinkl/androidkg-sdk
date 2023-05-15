@@ -8,7 +8,9 @@ https://github.com/qiniudemo/qiniu-lab-android
 ### Operating environment
 
 | Qiniu SDK version | Minimum Android version | Dependent library version |
+
 |------------ |------------------|------------------ ------|
+
 | 8.5.2 | Android 4.0+ | okhttp 4+ |
 | 8.5.1 | Android 4.0+ | okhttp 4+ |
 | 8.5.0 | Android 4.0+ | okhttp 4+ |
@@ -28,6 +30,7 @@ https://github.com/qiniudemo/qiniu-lab-android
 | 7.1.x | Android 2.3+ | okhttp 2.6+ |
 | 7.0.8,7.0.9 | Android 2.2+ | android-async-http 1.4.9 |
 | 7.0.7 | Android 2.2+ | android-async-http 1.4.8 |
+
 
 ### Notice
 * The latest version is recommended: 8.5.2
