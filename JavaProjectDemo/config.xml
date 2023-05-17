@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="com.luckyfarm.slotmachine" version="1.0.0.0" android-versionCode="1000000" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>Lucky Farm Slot Machine</name>
+	<description>1.0.0.0</description>
+	<author email="pauloarturbl@gmail.com" href="">Pas Games</author>
+	<content src="index.html" />
+	<allow-intent href="http://*/*" />
+	<allow-intent href="https://*/*" />
+	<allow-navigation href="https://*/*" />
+	<allow-navigation href="blob:*" />
+	<icon src="www/icons/icon01-256.png" width="256" height="256" density="xxxhdpi" />
+	<icon src="www/icons/icon01-128.png" width="128" height="128" density="xhdpi" />
+	<icon src="www/icons/icon01-114.png" width="114" height="114" />
+	<icon src="www/icons/icon01-32.png" width="32" height="32" />
+	<icon src="www/icons/icon01-16.png" width="16" height="16" />
+	<plugin name="cordova-plugin-inappbrowser" />
+	<plugin name="cordova-plugin-file" />
+	<preference name="orientation" value="landscape" />
+	<preference name="fullscreen" value="false" />
+	<preference name="DisallowOverscroll" value="true" />
+	<preference name="LoadUrlTimeoutValue" value="120000" />
+	<access origin="*" />
+	<preference name="AutoHideSplashScreen" value="false" />
+	<preference name="ShowSplashScreenSpinner" value="false" />
+	<engine name="android" spec="11.0.0" />
+	<platform name="android">
+		<preference name="android-minSdkVersion" value="29" />
+		<preference name="android-targetSdkVersion" value="32" />
+		<preference name="AndroidInsecureFileModeEnabled" value="true" />
+		<preference name="AndroidWindowSplashScreenAnimatedIcon" value="www/icons/iconicon01-80-64.png" />
+		<preference name="AndroidWindowSplashScreenBackground" value="#ffffff" />
+	</platform>
+</widget>

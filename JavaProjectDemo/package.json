@@ -1,0 +1,20 @@
+{
+	"name": "Lucky Farm Slot Machine",
+	"private": true,
+	"devDependencies": {
+		"cordova-android": "^11.0.0",
+		"cordova-plugin-file": "^7.0.0",
+		"cordova-plugin-inappbrowser": "^5.0.0"
+	},
+	"cordova": {
+		"platforms": [
+			"android"
+		],
+		"plugins": {
+			"cordova-plugin-inappbrowser": {},
+			"cordova-plugin-file": {
+				"ANDROIDX_WEBKIT_VERSION": "1.4.0"
+			}
+		}
+	}
+}

@@ -1,0 +1,79 @@
+{
+	"id": "com.luckyfarm.slotmachine",
+	"version": "1.0.0.0",
+	"versionCode": "1000000",
+	"name": "Lucky Farm Slot Machine",
+	"description": "1.0.0.0",
+	"whitelist": [
+		"http://*/*",
+		"https://*/*"
+	],
+	"author": "Pas Games",
+	"email": "pauloarturbl@gmail.com",
+	"website": "",
+	"orientation": "landscape",
+	"fullscreen": false,
+	"permissionTypes": [],
+	"icons": [
+		{
+			"src": "www/icons/icon01-256.png",
+			"width": 256,
+			"height": 256,
+			"density": "xxxhdpi"
+		},
+		{
+			"src": "www/icons/icon01-128.png",
+			"width": 128,
+			"height": 128,
+			"density": "xhdpi"
+		},
+		{
+			"src": "www/icons/icon01-114.png",
+			"width": 114,
+			"height": 114,
+			"density": null
+		},
+		{
+			"src": "www/icons/icon01-32.png",
+			"width": 32,
+			"height": 32,
+			"density": null
+		},
+		{
+			"src": "www/icons/icon01-16.png",
+			"width": 16,
+			"height": 16,
+			"density": null
+		}
+	],
+	"adaptiveIcons": [],
+	"preferences": [],
+	"plugins": [
+		{
+			"id": "cordova-plugin-inappbrowser",
+			"version": null,
+			"variables": []
+		},
+		{
+			"id": "cordova-plugin-file",
+			"version": null,
+			"variables": []
+		}
+	],
+	"resourceFiles": [],
+	"android": {
+		"min": "29",
+		"target": "32",
+		"engine": "11.0.0",
+		"plugins": []
+	},
+	"splash": "www/icons/iconicon01-80-64.png",
+	"splashBackground": "#ffffff",
+	"autoHideSplashScreen": false,
+	"iosScheme": "app",
+	"androidScheme": "file",
+	"enableAndroidX": false,
+	"enableGooglePlayServices": false,
+	"ios": null,
+	"useragent": null
+}
