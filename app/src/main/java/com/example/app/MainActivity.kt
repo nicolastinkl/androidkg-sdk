@@ -41,6 +41,6 @@ class MainActivity : AppCompatActivity() {
         println("result:$result")
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        
+
     }
 }

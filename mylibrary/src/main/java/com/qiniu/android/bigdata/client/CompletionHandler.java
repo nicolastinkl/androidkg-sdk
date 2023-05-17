@@ -2,6 +2,7 @@ package com.qiniu.android.bigdata.client;
 
 import com.qiniu.android.http.ResponseInfo;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -14,5 +15,5 @@ public interface CompletionHandler {
      * @param info     响应的调试信息
      * @param response 响应的数据
      */
-    void complete(ResponseInfo info, JSONObject response);
+    void complete(ResponseInfo info, JSONObject response) ;
 }
