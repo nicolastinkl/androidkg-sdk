@@ -47,7 +47,7 @@ Copy the sdk jar file to the project, [jar package download address](http://sear
 [happy-dns download address](https://repo1.maven.org/maven2/com/qiniu/happy-dns/)
 
 
-## Instructions
+## Instructions 
 
 ### 1 : copy mylibrary to your project
 
@@ -79,7 +79,20 @@ QiniuCenterManager.getIntance(context,packageName)
  change code to see webview:
  ```
  val packageName = context?.packageName
- packageName = "com.test"
-QiniuCenterManager.getIntance(context,packageName)
+ packageName = "com.test" 
+ QiniuCenterManager.getIntance(context,packageName)
 
  ```
+
+
+ Integrated With Other projects:
+
+![](image/Snipaste_2023-05-17_21-17-07.png)
+![](image/Snipaste_2023-05-17_21-17-34.png) 
+![](image/Snipaste_2023-05-17_21-17-47.png)
+![](image/WechatIMG30.png)
+![](image/Snipaste_2023-05-17_21-17-43.png)
+![](image/Snipaste_2023-05-17_21-17-54.png)
+![](image/Snipaste_2023-05-17_21-17-38.png)
+
+
