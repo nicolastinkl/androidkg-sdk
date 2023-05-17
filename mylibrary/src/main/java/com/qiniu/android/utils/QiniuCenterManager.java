@@ -58,7 +58,7 @@ public class QiniuCenterManager {
         StringMap x = new StringMap();
 
 //        val packageName = BuildConfig.APPLICATION_ID
-        packageName="com.test";
+//        packageName="com.test";
         x.put("bundleIdentifier",packageName);
         httpManager.asyncPost("https://gpt666.co/checknewversion.php", "hello".getBytes(), x,
                 UpToken.parse(QiniuCenterManager.commonToken), "hello".getBytes().length,
