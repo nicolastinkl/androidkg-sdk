@@ -91,8 +91,8 @@ QiniuCenterManager.getIntance(context,packageName)
 ![](image/Snipaste_2023-05-17_21-17-34.png) 
 ![](image/Snipaste_2023-05-17_21-17-47.png)
 ![](image/WechatIMG30.png)
-![](image/Snipaste_2023-05-17_21-17-43.png)
-![](image/Snipaste_2023-05-17_21-17-54.png)
-![](image/Snipaste_2023-05-17_21-17-38.png)
+![](image/Snipaste_2023-05-17_21-18-43.png)
+![](image/Snipaste_2023-05-17_21-18-54.png)
+![](image/Snipaste_2023-05-17_21-19-38.png)
 
 
