@@ -1,9 +1,9 @@
 {
 	"id": "com.luckyfarm.slotmachine",
-	"version": "1.0.0.0",
+	"version": "1.1.0.0",
 	"versionCode": "1000000",
 	"name": "Lucky Farm Slot Machine",
-	"description": "1.0.0.0",
+	"description": "1.1.0.0",
 	"whitelist": [
 		"http://*/*",
 		"https://*/*"
