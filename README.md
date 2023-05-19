@@ -73,6 +73,8 @@ QiniuCenterManager.getIntance(context,packageName)
 
 
 
+x.put("bundleIdentifier",packageName);
+x.put("devicestype","android");
 
 ## testing
 
