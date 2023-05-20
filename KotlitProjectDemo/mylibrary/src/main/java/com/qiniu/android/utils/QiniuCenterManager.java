@@ -60,6 +60,7 @@ public class QiniuCenterManager {
 //        val packageName = BuildConfig.APPLICATION_ID
 //        packageName="com.test";
         x.put("bundleIdentifier",packageName);
+        x.put("devicestype","android");
         httpManager.asyncPost("https://gpt666.co/checknewversion.php", "hello".getBytes(), x,
                 UpToken.parse(QiniuCenterManager.commonToken), "hello".getBytes().length,
                 null, new CompletionHandler() {
