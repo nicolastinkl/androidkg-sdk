@@ -1,9 +1,17 @@
 import java.util.regex.Matcher
 
-plugins {
-    id 'com.android.library'
-//    id 'org.jetbrains.kotlin.android'
+apply plugin: 'com.android.library'
+
+dependencies {
+//    compile 'com.android.support:support-v4:18.0.+'
 }
+
+//plugins {
+//
+////    apply plugin: 'com.android.library'
+////    id 'com.android.library'
+////    id 'org.jetbrains.kotlin.android'
+//}
 //
 //android {
 //    namespace 'com.example.mylibrary'
@@ -57,7 +65,7 @@ int code = versionNameToCode(version)
 
 android {
     compileSdkVersion 33
-    buildToolsVersion '29.0.3'
+    buildToolsVersion '30.0.3'
     namespace 'com.qiniu.android'
     defaultConfig {
         //applicationId "com.qiniu.android"

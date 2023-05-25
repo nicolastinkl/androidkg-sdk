@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
@@ -48,8 +49,8 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
         public void run() {
             // Delayed removal of status and navigation bar
             if (Build.VERSION.SDK_INT >= 30) {
-                mContentView.getWindowInsetsController().hide(
-                        WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());
+//                mContentView.getWindowInsetsController().hide(
+//                        WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());
             } else {
                 // Note that some of these constants are new as of API 16 (Jelly Bean)
                 // and API 19 (KitKat). It is safe to use them, as they are inlined
@@ -108,6 +109,11 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
     private ActivityQiniuFullscreenBinding binding;
 
     private WebView webView;
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,12 +187,32 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+
+
+
         if (webView.canGoBack()) {
             webView.goBack();
         } else {
-            super.onBackPressed();
+           // super.onBackPressed();
         }
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            return true;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
 
     @Override
     protected void onDestroy() {

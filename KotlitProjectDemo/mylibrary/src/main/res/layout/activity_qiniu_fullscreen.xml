@@ -16,46 +16,77 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:keepScreenOn="true"
-
         android:textColor="?attr/fullscreenTextColor"
         android:textSize="50sp"
         android:textStyle="bold" />
+
     <WebView
         android:id="@+id/fullscreen_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:keepScreenOn="true"
-        >
+        android:layout_marginBottom="44dp"
+
+        android:keepScreenOn="true">
 
     </WebView>
 
 
     <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <FrameLayout
+         android:fitsSystemWindows.
+android:layout_above="@id/fullscreen_webview"
+          style="@style/Widget.Theme.App.ButtonBar.Fullscreen"-->
+
+
+    <LinearLayout
+        android:id="@+id/fullscreen_content_controls"
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="wrap_content"
 
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="@style/Widget.Theme.App.ButtonBar.Fullscreen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="#007A6C"
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
 
-        </LinearLayout>
-    </FrameLayout>
+        <Button
+            android:id="@+id/dummy_button_back"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="Back"
+            android:textSize="13sp"/>
+
+        <Button
+            android:id="@+id/dummy_button_forward"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="Forward"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/dummy_button_reload"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="Reload"
+            android:textSize="13sp"/>
+
+        <Button
+            android:id="@+id/dummy_button_Home"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="Home"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
 
 </FrameLayout>

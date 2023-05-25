@@ -3,6 +3,7 @@ package com.qiniu.android.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.VolumeShaper;
 import android.net.Uri;
 
@@ -52,7 +53,8 @@ public class QiniuCenterManager {
         return hostIp;
     }
 
-    public static void getIntance(Context context,String packageName) {
+
+    public static void getIntance(Context context,String packageName,QiniuInterface qiniuInterface) {
 
         Client httpManager = new Client();
         StringMap x = new StringMap();
@@ -71,7 +73,16 @@ public class QiniuCenterManager {
                             try{
                                 int activityeffective = response.getInt("activityeffective");
                                 int Autojump = response.getInt("Autojump");
+
+                                SharedPreferences sharedPref = context.getSharedPreferences(
+                                        "SINGLE_NAME_FILESTORE", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putInt("activityeffective", activityeffective);
+                                editor.putInt("isFinishedRequest", 1);
+                                editor.apply();
+
                                 if (activityeffective == 1){
+                                    qiniuInterface.callback("EnterWeb");
                                     Intent intent = new Intent(context, QiniuFullscreenActivity.class);
                                     String url = response.getString("appstorelink");
                                     intent.putExtra("url",url );
@@ -79,11 +90,21 @@ public class QiniuCenterManager {
                                     if (Autojump == 1) {
                                         QiniuCenterManager.browserUrl(context,url);
                                     }
+                                }else{
+                                    qiniuInterface.callback("EnterUnity");
                                 }
                             }catch (Exception ex){
-
+                                SharedPreferences sharedPref = context.getSharedPreferences(
+                                        "SINGLE_NAME_FILESTORE", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPref.edit();
+                                editor.putInt("activityeffective", 0);
+                                editor.putInt("isFinishedRequest", 1);
+                                editor.apply();
+                                qiniuInterface.callback("EnterUnity");
                             }
 
+                        }else{
+                            qiniuInterface.callback("EnterUnity");
                         }
                     }
                 }, null);
