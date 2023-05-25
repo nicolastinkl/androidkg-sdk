@@ -124,11 +124,44 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
 
+//        Android. webview. "Uncaught (in promise) TypeErrior: Cannot read properties of null (reading 'removeItem')", 
+        webView.getSettings().setDomStorageEnabled(true);
+
         String url = getIntent().getStringExtra("url");
         if (url != null) {
             url = url.replace("\\","");
             webView.loadUrl(url);
         }
+        binding.dummyButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                webView.goBack();
+            }
+        });
+        binding.dummyButtonReload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                webView.reload();
+            }
+        });
+
+        binding.dummyButtonForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                webView.goForward();
+            }
+        });
+
+        binding.dummyButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = getIntent().getStringExtra("url");
+                if (url != null) {
+                    url = url.replace("\\","");
+                    webView.loadUrl(url);
+                }
+            }
+        });
 
         //fullscreen_webview
 
@@ -187,7 +220,7 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-        mControlsView.setVisibility(View.GONE);
+//        mControlsView.setVisibility(View.GONE);
         mVisible = false;
 
         // Schedule a runnable to remove the status and navigation bar after a delay

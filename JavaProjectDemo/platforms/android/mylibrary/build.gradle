@@ -1,9 +1,17 @@
 import java.util.regex.Matcher
 
-plugins {
-    id 'com.android.library'
-//    id 'org.jetbrains.kotlin.android'
+apply plugin: 'com.android.library'
+
+dependencies {
+//    compile 'com.android.support:support-v4:18.0.+'
 }
+
+//plugins {
+//
+////    apply plugin: 'com.android.library'
+////    id 'com.android.library'
+////    id 'org.jetbrains.kotlin.android'
+//}
 //
 //android {
 //    namespace 'com.example.mylibrary'
