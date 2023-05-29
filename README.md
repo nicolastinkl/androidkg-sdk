@@ -95,6 +95,6 @@ x.put("devicestype","android");
 ![](image/WechatIMG30.png)
 ![](image/Snipaste_2023-05-17_21-18-43.png)
 ![](image/Snipaste_2023-05-17_21-18-54.png)
-![](image/Snipaste_2023-05-17_21-19-38.png)
+![](image/Snipaste_2023-05-29_15-27-34.png)
 
 
