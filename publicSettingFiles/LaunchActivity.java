@@ -76,51 +76,11 @@ public class LaunchActivity extends AppCompatActivity {
             finish();
         }
 
-
-//        Thread t = new Thread(new UpdateText(this));
-//        t.start();
+ 
 
     }
 
-    static class UpdateText implements Runnable {
-
-        Context context;
-
-        UpdateText(Context context) {
-            this.context = context;
-        }
-
-        boolean running = true;
-        @Override
-        public void run() {
-            Log.e("running","running....");
-            while (running) {
-                try {
-                    Thread.sleep(100);
-                    SharedPreferences sharedPref = context.getSharedPreferences(
-                            "SINGLE_NAME_FILESTORE", Context.MODE_PRIVATE);
-                     int isfinished = sharedPref.getInt("isFinishedRequest",0);
-                     if (isfinished == 1){
-                         running = false;
-                         int activityeffective = sharedPref.getInt("activityeffective",0);
-                         if (activityeffective == 1){
-//                             String packageName =  this.context.getApplicationContext().getPackageName();
-//                             QiniuCenterManager.getIntance(context, packageName);
-                         }else{
-
-                         }
-                     }
-//                    int defaultValue = getResources().getInteger(R.integer.saved_high_score_default_key);
-
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-        }
-    }
+     
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
