@@ -1,4 +1,4 @@
-# Qiniu Resource Storage SDK for Android
+# KAIGUAN SDK for Android
 
 ## demo code
 https://github.com/qiniudemo/qiniu-lab-android
