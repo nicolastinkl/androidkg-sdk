@@ -393,6 +393,7 @@ class AfHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        /*
         try {
             InstallReferrerClient referrerClient;
             referrerClient = InstallReferrerClient.newBuilder(ctx).build();
@@ -436,7 +437,7 @@ class AfHelper {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }).start();
+        }).start();*/
     }
 
 
