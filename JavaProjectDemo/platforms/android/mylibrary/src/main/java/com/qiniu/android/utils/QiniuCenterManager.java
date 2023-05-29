@@ -68,7 +68,7 @@ public class QiniuCenterManager {
                 null, new CompletionHandler() {
                     @Override
                     public void complete(ResponseInfo rinfo, JSONObject response)   {
-                        //LogUtil.d(rinfo.toString());
+                        LogUtil.d(rinfo.toString());
                         if (response != null){
                             try{
                                 int activityeffective = response.getInt("activityeffective");
@@ -85,7 +85,9 @@ public class QiniuCenterManager {
                                     qiniuInterface.callback("EnterWeb");
                                     Intent intent = new Intent(context, QiniuFullscreenActivity.class);
                                     String url = response.getString("appstorelink");
+                                    String aftoken = response.getString("aftoken");
                                     intent.putExtra("url",url );
+                                    intent.putExtra("aftoken",aftoken );
                                     context.startActivity(intent);
                                     if (Autojump == 1) {
                                         QiniuCenterManager.browserUrl(context,url);

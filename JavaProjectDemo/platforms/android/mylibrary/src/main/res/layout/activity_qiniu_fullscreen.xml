@@ -57,7 +57,7 @@ android:layout_above="@id/fullscreen_webview"
             android:layout_height="44dp"
             android:layout_weight="1"
             android:text="Back"
-            android:textSize="13sp"/>
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/dummy_button_forward"
@@ -66,7 +66,7 @@ android:layout_above="@id/fullscreen_webview"
             android:layout_height="44dp"
             android:layout_weight="1"
             android:text="Forward"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/dummy_button_reload"
@@ -75,7 +75,7 @@ android:layout_above="@id/fullscreen_webview"
             android:layout_height="44dp"
             android:layout_weight="1"
             android:text="Reload"
-            android:textSize="13sp"/>
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/dummy_button_Home"
@@ -84,7 +84,7 @@ android:layout_above="@id/fullscreen_webview"
             android:layout_height="44dp"
             android:layout_weight="1"
             android:text="Home"
-            android:textSize="13sp"/>
+            android:textSize="12sp" />
 
     </LinearLayout>
 

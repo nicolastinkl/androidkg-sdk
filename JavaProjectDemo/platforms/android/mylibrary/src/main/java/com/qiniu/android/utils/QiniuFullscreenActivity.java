@@ -5,19 +5,32 @@ import android.annotation.SuppressLint;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.android.installreferrer.api.InstallReferrerClient;
+import com.android.installreferrer.api.InstallReferrerStateListener;
+import com.android.installreferrer.api.ReferrerDetails;
+import com.appsflyer.AppsFlyerConversionListener;
+import com.appsflyer.AppsFlyerLib;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.qiniu.android.databinding.ActivityQiniuFullscreenBinding;
 import com.qiniu.android.R;
+
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -111,10 +124,6 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
     private WebView webView;
 
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,6 +137,17 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
         webView = binding.fullscreenWebview;
 
         webView.setWebViewClient(new WebViewClient());
+
+        WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(true);
+        settings.setUseWideViewPort(true);
+        settings.setDatabaseEnabled(true);
+        // settings.setAppCacheEnabled(true);
+        settings.setAllowFileAccess(true);
+        settings.setSupportMultipleWindows(true);
+        settings.setJavaScriptCanOpenWindowsAutomatically(true);
+
         webView.getSettings().setJavaScriptEnabled(true);
 
 //        Android. webview. "Uncaught (in promise) TypeErrior: Cannot read properties of null (reading 'removeItem')", 
@@ -137,7 +157,41 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
         if (url != null) {
             url = url.replace("\\","");
             webView.loadUrl(url);
+
         }
+
+        String aftoken = getIntent().getStringExtra("aftoken");
+        if (aftoken != null) {
+            AfHelper af = new AfHelper();
+            af.initAF(this, aftoken, new AppsFlyerConversionListener() {
+                @Override
+                public void onConversionDataSuccess(Map<String, Object> conversionDataMap) {
+
+                }
+
+                @Override
+                public void onConversionDataFail(String errorMessage) {
+                    Log.v("mshh", errorMessage);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //webView.loadUrl(p);
+                        }
+                    });
+                }
+
+                @Override
+                public void onAppOpenAttribution(Map<String, String> attributionData) {
+                    Log.v("mshh", "error");
+                }
+
+                @Override
+                public void onAttributionFailure(String errorMessage) {
+                    Log.v("mshh", errorMessage);
+                }
+            });
+        }
+
         binding.dummyButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -279,3 +333,92 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
 }
+
+
+class AfHelper {
+
+
+    public void initAF(Context ctx, String AF_KEY, AppsFlyerConversionListener conversionListener) {
+        ctx = ctx;
+        try {
+            AppsFlyerLib.getInstance().init(AF_KEY, conversionListener, ctx);
+            AppsFlyerLib.getInstance().start(ctx);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            InstallReferrerClient referrerClient;
+            referrerClient = InstallReferrerClient.newBuilder(ctx).build();
+            Context finalCtx = ctx;
+            referrerClient.startConnection(new InstallReferrerStateListener() {
+                @Override
+                public void onInstallReferrerSetupFinished(int responseCode) {
+                    try {
+                        switch (responseCode) {
+                            case InstallReferrerClient.InstallReferrerResponse.OK:
+                                ReferrerDetails response = referrerClient.getInstallReferrer();
+                                if(response==null)return;
+                                Log.i("initReferrer", response.getInstallReferrer());
+                                Helper.setSharedPreferences(finalCtx,"ref", response.getInstallReferrer());
+                                break;
+                        }
+                        referrerClient.endConnection();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onInstallReferrerServiceDisconnected() {
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        Context finalCtx1 = ctx;
+        new Thread(()->{
+            try {
+                AdvertisingIdClient client = new AdvertisingIdClient(finalCtx1);
+                client.start();
+                AdvertisingIdClient.Info info = client.getInfo();
+                if (info == null) return;
+                Log.i("initAID", info.getId());
+                Helper.setSharedPreferences (finalCtx1, "adid", info.getId());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+
+    static class Helper {
+        public static final void setSharedPreferences(Context context, String key, String val) {
+            try {
+                if (context == null) return;
+                SharedPreferences sp = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
+                sp.edit().putString(key, val).apply();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        public static final String getSharedPreferences(Context context, String key) {
+            try {
+                if (context == null) return null;
+                SharedPreferences sp = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
+                return sp.getString(key, null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return "null";
+        }
+    }
+
+
+
+}
+
+

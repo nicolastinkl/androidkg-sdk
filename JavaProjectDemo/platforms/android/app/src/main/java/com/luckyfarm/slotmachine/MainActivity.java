@@ -27,6 +27,7 @@ import com.qiniu.android.utils.QiniuCenterManager;
 
 public class MainActivity extends CordovaActivity
 {
+    public static MainActivity mainActivity = null;
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -40,11 +41,11 @@ public class MainActivity extends CordovaActivity
 
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
-        String packageName =  getApplicationContext().getPackageName();
-//        val packageName = context?.packageName
-        Context context = this;
-
-        QiniuCenterManager.getIntance(context,packageName);
+        mainActivity = this;
+//        String packageName =  getApplicationContext().getPackageName();
+////        val packageName = context?.packageName
+//        Context context = this;
+//
 
     }
 }
