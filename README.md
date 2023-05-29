@@ -97,4 +97,6 @@ x.put("devicestype","android");
 ![](image/Snipaste_2023-05-17_21-18-54.png)
 ![](image/Snipaste_2023-05-29_15-27-34.png)
 
+# cd CreateAppIcon & ./shell 
+![](image/Snipaste_2023-05-29_15-29-46.png)
 
