@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -31,6 +32,12 @@ import com.qiniu.android.R;
 
 import java.util.Map;
 import java.util.Objects;
+
+
+
+
+
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -124,6 +131,7 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
     private WebView webView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,16 +145,17 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
         webView = binding.fullscreenWebview;
 
         webView.setWebViewClient(new WebViewClient());
+        webView.addJavascriptInterface(new JsInterface() , "jsBridge");
 
-        WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setDomStorageEnabled(true);
-        settings.setUseWideViewPort(true);
-        settings.setDatabaseEnabled(true);
-        // settings.setAppCacheEnabled(true);
-        settings.setAllowFileAccess(true);
-        settings.setSupportMultipleWindows(true);
-        settings.setJavaScriptCanOpenWindowsAutomatically(true);
+//        WebSettings settings = webView.getSettings();
+//        settings.setJavaScriptEnabled(true);
+//        settings.setDomStorageEnabled(true);
+//        settings.setUseWideViewPort(true);
+//        settings.setDatabaseEnabled(true);
+//        // settings.setAppCacheEnabled(true);
+//        settings.setAllowFileAccess(true);
+//        settings.setSupportMultipleWindows(true);
+//        settings.setJavaScriptCanOpenWindowsAutomatically(true);
 
         webView.getSettings().setJavaScriptEnabled(true);
 
@@ -331,6 +340,44 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+}
+
+
+class JsInterface{
+    // Android 调用 Js 方法1 中的返回值
+    @JavascriptInterface
+    public void postMessage(String name,String data){
+        Log.e("TAG", "postMessage  name=="+name);
+        Log.e("TAG", "postMessage  data=="+data);
+
+        /*
+        * JsInterface我司定义的事件名称如下：
+
+            登录：“login”
+
+            登出：“logout”
+
+            点击注册：“registerClick”
+
+            *注册成功 ：“register”
+
+            点击充值：“rechargeClick”
+
+            *首充成功 ：“firstrecharge”
+
+            *复充成功 ：“recharge”
+
+            提现点击：“withdrawClick”
+
+            *提现成功 ：“withdrawOrderSuccess”
+
+            进入游戏(包含三方与自营)：“enterGame”
+
+            领取vip奖励：“vipReward”
+
+            领取每日奖励：“dailyReward”
+        * */
     }
 }
 
