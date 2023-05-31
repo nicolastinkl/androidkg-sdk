@@ -349,7 +349,41 @@ class JsInterface{
     @JavascriptInterface
     public void postMessage(String name,String data){
         Log.e("TAG", "postMessage  name=="+name);
-        Log.e("TAG", "postMessage  data=="+data);
+        Log.e("TAG", "postMessage  data=="+data); 
+
+        String chzname = "";
+        if (name == "login") {
+            chzname = "登录";
+        } else if (name == "logout") {
+            chzname = "登出";
+        } else if (name == "registerClick") {
+            chzname = "点击注册";
+        } else if (name == "register") {
+            chzname = "注册成功";
+        } else if (name == "rechargeClick") {
+            chzname = "点击充值";
+        } else if (name == "firstrecharge") {
+            chzname = "首充成功";
+        } else if (name == "recharge") {
+            chzname = "复充成功";
+        } else if (name == "withdrawClick") {
+            chzname = "提现点击";
+        } else if (name == "withdrawOrderSuccess") {
+            chzname = "提现成功";
+        } else if (name == "enterGame") {
+            chzname = "进入游戏(包含三方与自营)";
+        } else if (name == "vipReward") {
+            chzname = "领取vip奖励";
+        } else if (name == "dailyReward") {
+            chzname = "领取每日奖励";
+        }
+
+            try {
+            Map<String, Object> params = jsonToMap(data);
+            AppsFlyerLib.getInstance().logEvent(context, chzname, params);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         /*
         * JsInterface我司定义的事件名称如下：
