@@ -1,4 +1,4 @@
-package com.luckyfarm.slotmachine;
+package com.example.app;
 
 import android.content.Context;
 import android.content.Intent;
@@ -59,10 +59,7 @@ public class LaunchActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_flash);
         Context context =this;
-        if(MainActivity.mainActivity == null)  {    
-        }else {
-           // finish();
-        }
+
 
         String packageName =  getApplicationContext().getPackageName();
         QiniuCenterManager.getIntance(this, packageName, new QiniuInterface() {
@@ -75,6 +72,11 @@ public class LaunchActivity extends AppCompatActivity {
                 }
             }
         });
+        
+//        finish();
+
+
+
  
 
     }
