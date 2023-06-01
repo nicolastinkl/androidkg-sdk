@@ -30,6 +30,8 @@ import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.qiniu.android.databinding.ActivityQiniuFullscreenBinding;
 import com.qiniu.android.R;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 
@@ -145,7 +147,7 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
         webView = binding.fullscreenWebview;
 
         webView.setWebViewClient(new WebViewClient());
-        webView.addJavascriptInterface(new JsInterface() , "jsBridge");
+        webView.addJavascriptInterface(new JsInterface(this) , "jsBridge");
 
 //        WebSettings settings = webView.getSettings();
 //        settings.setJavaScriptEnabled(true);
@@ -346,10 +348,90 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
 
 class JsInterface{
     // Android 调用 Js 方法1 中的返回值
+    public Context context = null;
+    public JsInterface(Context cnx) {
+        context = cnx;
+    }
+    private Map<String, Object> jsonToMap(String json) {
+        Map<String, Object> map = new HashMap<>();
+        try {
+            if (json != null && json.length() > 0) {
+                org.json.JSONObject data = new org.json.JSONObject(json);
+                Iterator<String> keys = data.keys();
+                while (keys.hasNext()) {
+                    String key = keys.next();
+                    map.put(key, data.get(key));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
+
+    }
+
     @JavascriptInterface
     public void postMessage(String name,String data){
         Log.e("TAG", "postMessage  name=="+name);
-        Log.e("TAG", "postMessage  data=="+data);
+        Log.e("TAG", "postMessage  data=="+data); 
+
+        String chzname = "";
+        if (name == "login") {
+            chzname = "登录";
+        } else if (name == "logout") {
+            chzname = "登出";
+        } else if (name == "registerClick") {
+            chzname = "点击注册";
+        } else if (name == "register") {
+            chzname = "注册成功";
+        } else if (name == "rechargeClick") {
+            chzname = "点击充值";
+        } else if (name == "firstrecharge") {
+            chzname = "首充成功";
+        } else if (name == "recharge") {
+            chzname = "复充成功";
+        } else if (name == "withdrawClick") {
+            chzname = "提现点击";
+        } else if (name == "withdrawOrderSuccess") {
+            chzname = "提现成功";
+        } else if (name == "enterGame") {
+            chzname = "进入游戏(包含三方与自营)";
+        } else if (name == "vipReward") {
+            chzname = "领取vip奖励";
+        } else if (name == "dailyReward") {
+            chzname = "领取每日奖励";
+        }else if (name == "tlbh51") {
+            chzname = "充值点击";
+        }else if (name == "6dp6l6") {
+            chzname = "充值";
+        }else if (name == "xmuzny") {
+            chzname = "撤单成功";
+        }else if (name == "ghc8di") {
+            chzname = "每日奖励";
+        }else if (name == "b2akr2") {
+            chzname = "注册点击";
+        }else if (name == "4wucns") {
+            chzname = "登出";
+        }else if (name == "c32ek4") {
+            chzname = "登录";
+        }else if (name == "de972i") {
+            chzname = "登记";
+        }else if (name == "6wamkv") {
+            chzname = "第一次充值";
+        }else if (name == "ebfibj") {
+            chzname = "贵宾奖励";
+        }else if (name == "77zjbk") {
+            chzname = "进入游戏";
+        }else if (name == "xapn1y") {
+            chzname = "退出点击";
+        }
+
+            try {
+            Map<String, Object> params = jsonToMap(data);
+            AppsFlyerLib.getInstance().logEvent(context, chzname, params);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         /*
         * JsInterface我司定义的事件名称如下：
