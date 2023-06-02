@@ -1,4 +1,4 @@
-package com.space.slotmachine;
+package com.adadjkwa.invitation;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.space.slotmachine", appContext.getPackageName());
+        assertEquals("com.adadjkwa.invitation", appContext.getPackageName());
     }
 }

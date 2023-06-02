@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.space.slotmachine'
+    namespace 'com.adadjkwa.invitation'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.space.slotmachine"
+        applicationId "com.adadjkwa.invitation"
         minSdk 21
         targetSdk 33
         versionCode 1

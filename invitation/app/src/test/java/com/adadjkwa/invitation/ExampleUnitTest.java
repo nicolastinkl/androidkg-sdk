@@ -1,4 +1,4 @@
-package com.space.slotmachine;
+package com.adadjkwa.invitation;
 
 import org.junit.Test;
 

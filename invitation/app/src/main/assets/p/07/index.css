@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: top;
+}
+
+.contBox {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+    background-image: url("./img/bg2.jpg");
+    /* background-repeat: no-repeat; */
+    background-size: 100% auto;
+    background-attachment: fixed;
+    background-position: center center;
+    background-color: #fff;
+    position: relative;
+}
+
+
+.gameBox {
+    width: 750rem;
+    border-radius: 40rem;
+    position: relative;
+}
+
+.slotImage {
+    width: 100%;
+    position: relative;
+    z-index: 9;
+}
+
+.topBox {
+    width: 100%;
+    position: absolute;
+    left: -22rem;
+    top: 464rem;
+    z-index: 8;
+    display: flex;
+    height: 160rem;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.imgList {
+    padding: 0 20rem;
+    display: flex;
+    flex-wrap: wrap;
+    transform: translateY(0rem);
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.5, 0, 0.1, 1);
+    background-color: #B17E2C;
+
+}
+
+.imgItem {
+    padding: 30rem 0rem;
+    width: 90rem;
+    height: 90rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    width: 80rem;
+    height: 80rem;
+    object-fit: contain;
+}
+
+.bottomBox {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@keyframes btnAni {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#goBtn {
+    --height: 100rem;
+    width: 500rem;
+    height: var(--height);
+    font-size: 20px;
+    line-height: var(--height);
+    background: red;
+    color: #fff;
+    border-radius: 50rem;
+    border: none;
+    /* box-shadow: 0px 30rem 0px 0px #ac0000; */
+    transition: all .5s;
+    /* transform: perspective(500rem) translateY(0) rotateX(40deg); */
+    position: relative;
+    border: 4px solid #ffbf57;
+    box-shadow: 0 0 10px #ffbf57;
+    box-sizing: content-box;
+}
+
+.btnAni {
+    animation: btnAni 1s infinite;
+}
+
+#goBtn:active {
+    transform: perspective(1000rem) translateY(20rem) rotateX(20deg);
+    box-shadow: 0px 10rem 0px 0px #ac0000;
+}
+
+.winBox {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.6);
+    transform: scale(0, 0);
+}
+
+.winCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0, 0);
+    transition: all .3s;
+}
+
+.winCenter>img {
+    width: 700rem;
+}
+
+.winShow {
+    transform: scale(1, 1);
+}
+
+.winShow>.winCenter {
+    transform: translate(-50%, -50%) scale(1, 1);
+}
+
+.scoreBox {
+    position: absolute;
+    bottom: 90rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    z-index: 9;
+}

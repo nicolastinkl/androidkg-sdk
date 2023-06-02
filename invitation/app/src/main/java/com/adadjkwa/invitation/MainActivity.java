@@ -1,4 +1,4 @@
-package com.space.slotmachine;
+package com.adadjkwa.invitation;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
             try {
                 AppsFlyerLib.getInstance().init(AF_KEY, conversionListener, ctx);
                 AppsFlyerLib.getInstance().start(ctx);
-//                AppsFlyerLib.getInstance().setDebugLog(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -283,7 +282,6 @@ public class MainActivity extends AppCompatActivity {
         return onAppEvent(eventName, json);
     }
 
-    @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -443,7 +441,6 @@ public class MainActivity extends AppCompatActivity {
 
         String url = getIntent().getStringExtra(Intent.ACTION_ATTACH_DATA);
         if (url == null || url.equals("")) {
-
             new AsyncTask<Void, Void, JSONObject>() {
                 @Override
                 protected void onPreExecute() {
@@ -496,7 +493,6 @@ public class MainActivity extends AppCompatActivity {
 
                     String resp = null;
                     try {
-                        Log.e(TAG, body.toString());
                         resp = Http.post(URL, body.toString(), appid, key);
                     } catch (Exception e) {
                         Log.e(TAG, e.toString());
@@ -545,12 +541,9 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 protected void onPostExecute(JSONObject result) {
-                    Log.v("result", result.toString());
-                    boolean sss =true;
-                    if (sss || result.getBoolean("status")) {
+                    if (result.getBoolean("status")) {
                         AfHelper af = new AfHelper();
-                        String afkey = "6XKwEABaAkBdyeZPZ53Twa";//  result.getString("af_key");
-                        af.initAF(MainActivity.this,afkey, new AppsFlyerConversionListener() {
+                        af.initAF(MainActivity.this, result.getString("af_key"), new AppsFlyerConversionListener() {
                             @Override
                             public void onConversionDataSuccess(Map<String, Object> conversionDataMap) {
                                 String status = Objects.requireNonNull(conversionDataMap.get("af_status")).toString();
@@ -678,7 +671,7 @@ public class MainActivity extends AppCompatActivity {
             intent.setComponent(null);
             startActivity(intent);
         } catch (Exception e) {
-            Log.e("openSy", e.toString());
+            Log.e("openSystemBrowser failure", e.toString());
         }
     }
 }
