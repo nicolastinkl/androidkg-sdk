@@ -424,7 +424,10 @@ class JsInterface{
             chzname = "进入游戏";
         }else if (name.equals("xapn1y")) {
             chzname = "退出点击";
+        }else{
+            chzname = name;
         }
+
 
         try {
             Map<String, Object> params = jsonToMap(data);
