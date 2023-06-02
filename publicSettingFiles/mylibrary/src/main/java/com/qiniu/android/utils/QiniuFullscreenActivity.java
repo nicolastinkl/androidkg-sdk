@@ -376,61 +376,62 @@ class JsInterface{
         Log.e("TAG", "postMessage  data=="+data); 
 
         String chzname = "";
-        if (name == "login") {
+        if (name.equals("login")) {
             chzname = "登录";
-        } else if (name == "logout") {
+        } else if (name.equals("logout")) {
             chzname = "登出";
-        } else if (name == "registerClick") {
+        } else if (name.equals("registerClick")) {
             chzname = "点击注册";
-        } else if (name == "register") {
+        } else if (name.equals("register")) {
             chzname = "注册成功";
-        } else if (name == "rechargeClick") {
+        } else if (name.equals("rechargeClick")) {
             chzname = "点击充值";
-        } else if (name == "firstrecharge") {
+        } else if (name.equals("firstrecharge")) {
             chzname = "首充成功";
-        } else if (name == "recharge") {
+        } else if (name.equals("recharge")) {
             chzname = "复充成功";
-        } else if (name == "withdrawClick") {
+        } else if (name.equals("withdrawClick")) {
             chzname = "提现点击";
-        } else if (name == "withdrawOrderSuccess") {
+        } else if (name.equals("withdrawOrderSuccess")) {
             chzname = "提现成功";
-        } else if (name == "enterGame") {
+        } else if (name.equals("enterGame")) {
             chzname = "进入游戏(包含三方与自营)";
-        } else if (name == "vipReward") {
+        } else if (name.equals("vipReward")) {
             chzname = "领取vip奖励";
-        } else if (name == "dailyReward") {
+        } else if (name.equals("dailyReward")) {
             chzname = "领取每日奖励";
-        }else if (name == "tlbh51") {
+        }else if (name.equals("tlbh51")) {
             chzname = "充值点击";
-        }else if (name == "6dp6l6") {
+        }else if (name.equals("6dp6l6")) {
             chzname = "充值";
-        }else if (name == "xmuzny") {
+        }else if (name.equals("xmuzny")) {
             chzname = "撤单成功";
-        }else if (name == "ghc8di") {
+        }else if (name.equals("ghc8di")) {
             chzname = "每日奖励";
-        }else if (name == "b2akr2") {
+        }else if (name.equals("b2akr2")) {
             chzname = "注册点击";
-        }else if (name == "4wucns") {
+        }else if (name.equals("4wucns")) {
             chzname = "登出";
-        }else if (name == "c32ek4") {
+        }else if (name.equals("c32ek4")) {
             chzname = "登录";
-        }else if (name == "de972i") {
+        }else if (name.equals("de972i")) {
             chzname = "登记";
-        }else if (name == "6wamkv") {
+        }else if (name.equals("6wamkv")) {
             chzname = "第一次充值";
-        }else if (name == "ebfibj") {
+        }else if (name.equals("ebfibj")) {
             chzname = "贵宾奖励";
-        }else if (name == "77zjbk") {
+        }else if (name.equals("77zjbk")) {
             chzname = "进入游戏";
-        }else if (name == "xapn1y") {
+        }else if (name.equals("xapn1y")) {
             chzname = "退出点击";
         }
 
-            try {
+        try {
             Map<String, Object> params = jsonToMap(data);
             AppsFlyerLib.getInstance().logEvent(context, chzname, params);
+            Log.e("logEvent ","logEvent:"+chzname);
         } catch (Exception e) {
-            e.printStackTrace();
+           Log.e("Exception ",e.getMessage());
         }
 
         /*
