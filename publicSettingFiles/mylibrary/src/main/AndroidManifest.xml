@@ -21,17 +21,17 @@
             android:exported="false"
             android:label="@string/title_activity_qiniu_fullscreen"
             android:theme="@style/Theme.App.Fullscreen" />
-        <activity
-            android:name=".utils.Wait$FullscreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="false"
-            android:label="@string/title_activity_fullscreen"
-            android:theme="@style/Theme.App.Fullscreen" />
-        <activity
-            android:name=".WebViewActivity"
-            android:exported="false"
-            android:label="@string/title_activity_web_view"
-            android:theme="@style/Theme.App" />
+<!--        <activity-->
+<!--            android:name=".utils.Wait$FullscreenActivity"-->
+<!--            android:configChanges="orientation|keyboardHidden|screenSize"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_fullscreen"-->
+<!--            android:theme="@style/Theme.App.Fullscreen" />-->
+<!--        <activity-->
+<!--            android:name=".WebViewActivity"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_web_view"-->
+<!--            android:theme="@style/Theme.App" />-->
 
         <uses-library
             android:name="android.test.runner"

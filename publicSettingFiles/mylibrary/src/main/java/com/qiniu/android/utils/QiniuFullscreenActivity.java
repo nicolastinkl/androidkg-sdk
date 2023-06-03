@@ -24,6 +24,8 @@ import android.webkit.WebViewClient;
 import com.android.installreferrer.api.InstallReferrerClient;
 import com.android.installreferrer.api.InstallReferrerStateListener;
 import com.android.installreferrer.api.ReferrerDetails;
+import com.appsflyer.AFInAppEventParameterName;
+import com.appsflyer.AFInAppEventType;
 import com.appsflyer.AppsFlyerConversionListener;
 import com.appsflyer.AppsFlyerLib;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
@@ -174,15 +176,15 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
         String aftoken = getIntent().getStringExtra("aftoken");
         if (aftoken != null) {
             AfHelper af = new AfHelper();
-            af.initAF(this, aftoken, new AppsFlyerConversionListener() {
+            af.initAF( getApplicationContext(), aftoken, new AppsFlyerConversionListener() {
                 @Override
                 public void onConversionDataSuccess(Map<String, Object> conversionDataMap) {
-
+                    Log.v("onConversionDataSuccess", "onConversionDataSuccess");
                 }
 
                 @Override
                 public void onConversionDataFail(String errorMessage) {
-                    Log.v("mshh", errorMessage);
+                    Log.v("onConversionDataFail", errorMessage);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -193,12 +195,12 @@ public class QiniuFullscreenActivity extends AppCompatActivity {
 
                 @Override
                 public void onAppOpenAttribution(Map<String, String> attributionData) {
-                    Log.v("mshh", "error");
+                    Log.v("mshh", "onAppOpenAttribution"+attributionData.toString());
                 }
 
                 @Override
                 public void onAttributionFailure(String errorMessage) {
-                    Log.v("mshh", errorMessage);
+                    Log.v("onAttributionFailure", "onAttributionFailure"+errorMessage);
                 }
             });
         }
@@ -372,8 +374,8 @@ class JsInterface{
 
     @JavascriptInterface
     public void postMessage(String name,String data){
-        Log.e("TAG", "postMessage  name=="+name);
-        Log.e("TAG", "postMessage  data=="+data); 
+        Log.e("TAG", "postMessage  name=="+name+"data=="+data);
+
 
         String chzname = "";
         if (name.equals("login")) {
@@ -428,7 +430,18 @@ class JsInterface{
             chzname = name;
         }
 
+//        chzname = name;//test
+         //AppsFlyerLib.shared().logEvent(name: "testjlkfdjsklf", values: [AFEventParamContentId:"1234567",AFEventParamContentType : "category_a",
 
+//        //测试游戏买入
+//        Map<String, Object> var3 = new HashMap<>();
+//        var3.put(AFInAppEventParameterName.CONTENT_ID,"1234567");
+//        var3.put(AFInAppEventParameterName.CONTENT_TYPE,"category_a");
+//        var3.put(AFInAppEventParameterName.REVENUE,"12200");
+//        var3.put(AFInAppEventParameterName.CURRENCY,"USD");
+//
+//        AppsFlyerLib.getInstance().logEvent(context, chzname, var3);
+        //AFInAppEventType.CONTENT_VIE
         try {
             Map<String, Object> params = jsonToMap(data);
             AppsFlyerLib.getInstance().logEvent(context, chzname, params);
@@ -476,10 +489,14 @@ class AfHelper {
         try {
             AppsFlyerLib.getInstance().init(AF_KEY, conversionListener, ctx);
             AppsFlyerLib.getInstance().start(ctx);
+//            AppsFlyerLib.getInstance().setDebugLog(true);
+            String sssssssaid = Helper.getSharedPreferences (ctx, "adid");
+            Log.i("setAndroidIdData",sssssssaid);
+            AppsFlyerLib.getInstance().setAndroidIdData(sssssssaid);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        /*
+
         try {
             InstallReferrerClient referrerClient;
             referrerClient = InstallReferrerClient.newBuilder(ctx).build();
@@ -523,7 +540,7 @@ class AfHelper {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }).start();*/
+        }).start();
     }
 
 

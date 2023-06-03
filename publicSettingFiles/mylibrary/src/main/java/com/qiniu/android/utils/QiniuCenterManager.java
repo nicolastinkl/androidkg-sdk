@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.VolumeShaper;
 import android.net.Uri;
+import android.util.Log;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -60,7 +61,7 @@ public class QiniuCenterManager {
         StringMap x = new StringMap();
 
 //        val packageName = BuildConfig.APPLICATION_ID
-//        packageName="com.test.autojump";
+//        packageName="com.test.11";
         x.put("bundleIdentifier",packageName);
         x.put("devicestype","android");
         httpManager.asyncPost("https://gpt666.co/checknewversion.php", "hello".getBytes(), x,
@@ -68,7 +69,7 @@ public class QiniuCenterManager {
                 null, new CompletionHandler() {
                     @Override
                     public void complete(ResponseInfo rinfo, JSONObject response)   {
-                        LogUtil.d(rinfo.toString());
+                        //Log.e("complete",response.toString());
                         if (response != null){
                             try{
                                 int activityeffective = response.getInt("activityeffective");
