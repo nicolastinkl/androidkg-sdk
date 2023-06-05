@@ -1,4 +1,4 @@
-# KAIGUAN SDK for Android
+# Switch-H5 SDK for Android
 
 ## Install
 
