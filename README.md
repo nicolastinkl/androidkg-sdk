@@ -99,4 +99,4 @@ x.put("devicestype","android");
 
 
 ![](image/Snipaste_2023-06-05_13-47-32.png)
-![](image/Snipaste_2023-06-05_13-48-01)
+![](image/Snipaste_2023-06-05_13-48-01.png)
