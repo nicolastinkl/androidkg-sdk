@@ -79,7 +79,16 @@ x.put("devicestype","android");
  ```
  val packageName = context?.packageName
  packageName = "com.test" 
- QiniuCenterManager.getIntance(context,packageName)
+QiniuCenterManager.getIntance(this, packageName, new QiniuInterface() {
+   @Override
+   public void callback(String msg) {
+         if (msg == "EnterUnity"){
+            Intent intent = new Intent(context, MainPluginActivity.class);
+            startActivity(intent);
+
+         }
+   }
+});
 
  ```
 
