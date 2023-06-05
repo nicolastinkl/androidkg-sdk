@@ -60,8 +60,17 @@ import com.qiniu.android.utils.QiniuCenterManager
 
 ... 
 //Get  packageName from the code 
-val packageName = context?.packageName
-QiniuCenterManager.getIntance(context,packageName)
+String packageName =  getApplicationContext().getPackageName();
+QiniuCenterManager.getIntance(this, packageName, new QiniuInterface() {
+   @Override
+   public void callback(String msg) {
+         if (msg == "EnterUnity"){
+            Intent intent = new Intent(context, MainPluginActivity.class);
+            startActivity(intent);
+
+         }
+   }
+});
     
 
 ...
